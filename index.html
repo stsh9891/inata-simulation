@@ -477,6 +477,7 @@ canvas{display:block;touch-action:none;}
           <button class="abt" id="btnReturnSoil" onclick="doReturnSoil()" disabled>↑ 土を戻す指示</button>
           <button class="abt" id="btnManualAdd" onclick="doManualAdd()" disabled>🔧 +10mm 削る</button>
           <button class="abt" id="btnManualRem" onclick="doManualRem()" disabled>🔧 -10mm 埋める</button>
+          <button class="abt" id="btnLevelSoil" onclick="doLevelSoil()" disabled>⚒ 不陸調整（ジョレン）</button>
           <button class="abt" id="btnSectionOK" onclick="doSectionOK()" disabled>✓ この深さでOK</button>
         </div>
       </div>
@@ -1366,6 +1367,7 @@ function doCheck(){
   setBtn('btnCheck',false);
   setBtn('btnDigMore',true);setBtn('btnReturnSoil',true);
   setBtn('btnManualAdd',true);setBtn('btnManualRem',true);
+  setBtn('btnLevelSoil',true);
   setBtn('btnSectionOK',true);
   updateHudPhase(`根切工 区画${G.curSec+1}`,`スタッフ値: ${G.ps1}mm / 現在深さ(平均): ${avgDepth}mm`);
   document.getElementById('hudDepth').textContent=`${avgDepth}mm`;
@@ -1382,7 +1384,8 @@ function doDigMore(){
   document.getElementById('hudDepth').textContent=`${avgDepth}mm`;
   setTimeout(()=>{
     setBtn('btnDigMore',false);setBtn('btnReturnSoil',false);
-    setBtn('btnManualAdd',false);setBtn('btnManualRem',false);setBtn('btnSectionOK',false);
+    setBtn('btnManualAdd',false);setBtn('btnManualRem',false);
+    setBtn('btnLevelSoil',false);setBtn('btnSectionOK',false);
     setBtn('btnCheck',true);
     showNotify('掘削完了',`区画${G.curSec+1}: ${sec.buckets}バケット目完了（平均${Math.round(profileAvg(sec.soilProfile))}mm）`);
     Player.hasStaff=false;G.measuring=false;G.measType=null;
@@ -1398,7 +1401,8 @@ function doReturnSoil(){
   addScore(2);sndBtn();
   setTimeout(()=>{
     setBtn('btnDigMore',false);setBtn('btnReturnSoil',false);
-    setBtn('btnManualAdd',false);setBtn('btnManualRem',false);setBtn('btnSectionOK',false);
+    setBtn('btnManualAdd',false);setBtn('btnManualRem',false);
+    setBtn('btnLevelSoil',false);setBtn('btnSectionOK',false);
     setBtn('btnCheck',true);
     Player.hasStaff=false;G.measuring=false;G.measType=null;
     updateHudPhase(`根切工 区画${G.curSec+1}`,'深さを再確認してください');
@@ -1423,6 +1427,21 @@ function doManualRem(){
   showNotify('手動埋め',`区画${G.curSec+1} 列${col+1}: -${MANUAL_ADJ}mm`);
 }
 
+function doLevelSoil(){
+  // ジョレン・ならしレーキで根切底を不陸調整（平均値へ均す）
+  const sec=G.sections[G.curSec];
+  const profile=sec.soilProfile;
+  const mean=profile.reduce((a,b)=>a+b,0)/profile.length;
+  for(let c=0;c<PROFILE_COLS;c++){
+    profile[c]+=(mean-profile[c])*0.45;       // 平均方向へ45%収束
+    profile[c]+=(Math.random()-0.5)*4;         // わずかな残留不陸
+    profile[c]=Math.max(0,profile[c]);
+  }
+  addScore(5);sndBtn();
+  document.getElementById('hudDepth').textContent=`${Math.round(profileAvg(profile))}mm`;
+  showNotify('不陸調整',`ジョレン・ならしレーキで根切底を均しました。\n再確認してください。`);
+}
+
 function doSectionOK(){
   const sec=G.sections[G.curSec];
   const avgDepth=profileAvg(sec.soilProfile);
@@ -1431,7 +1450,8 @@ function doSectionOK(){
   addScore(10);sndOK();
   sec.excOK=true;
   setBtn('btnDigMore',false);setBtn('btnReturnSoil',false);
-  setBtn('btnManualAdd',false);setBtn('btnManualRem',false);setBtn('btnSectionOK',false);
+  setBtn('btnManualAdd',false);setBtn('btnManualRem',false);
+  setBtn('btnLevelSoil',false);setBtn('btnSectionOK',false);
   Player.hasStaff=false;G.measuring=false;G.measType=null;
   showNotify(`区画${G.curSec+1} OK！`,`深さ確定（平均${Math.round(avgDepth)}mm）\n目標との誤差: ${diff>=0?'+':''}${diff}mm`);
 
