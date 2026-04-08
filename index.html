@@ -70,7 +70,7 @@ canvas{display:block;touch-action:none;}
 #hudTask{color:#aaa;font-size:10px;text-align:center;}
 
 /* Canvas wrapper */
-#canvasWrap{flex:1;position:relative;overflow:hidden;}
+#canvasWrap{flex:1;position:relative;overflow:hidden;width:100%;min-width:0;}
 #gameCanvas{position:absolute;inset:0;width:100%;height:100%;}
 
 /* Bottom panel */
@@ -195,7 +195,7 @@ canvas{display:block;touch-action:none;}
 <!-- ===== TITLE SCREEN ===== -->
 <div id="titleScreen" class="screen active">
   <div class="title-logo">
-    <div class="company">稲田建設株式会社</div>
+    <div class="company">有限会社稲田建設</div>
     <div class="game-title">根切シミュレーター</div>
     <div class="game-sub">手元作業員 研修システム｜Foundation Excavation Training</div>
   </div>
@@ -218,7 +218,7 @@ canvas{display:block;touch-action:none;}
         <div class="step-num">1</div>
         <div class="step-content">
           <h3>あなたの役割</h3>
-          <p>あなたは<span class="highlight">稲田建設の手元作業員</span>です。バックホウオペレーターに指示を出し、根切底→砕石→捨コンの工程を管理します。重機は<span class="highlight">あなたの指示なしでは動きません。</span></p>
+          <p>あなたは<span class="highlight">有限会社稲田建設の手元作業員</span>です。バックホウオペレーターに指示を出し、根切底→砕石→捨コンの工程を管理します。重機は<span class="highlight">あなたの指示なしでは動きません。</span></p>
         </div>
       </div>
       <div class="howto-step">
@@ -290,7 +290,7 @@ GL-1600 ████捨コン上端████  (80mm捨コン)
 <div id="diffScreen" class="screen">
   <div style="text-align:center;">
     <div class="diff-title">難易度を選んでください</div>
-    <div class="diff-sub">稲田建設 手元作業員 研修システム</div>
+    <div class="diff-sub">有限会社稲田建設 手元作業員 研修システム</div>
   </div>
   <div class="diff-grid">
     <div class="diff-card" style="--clr:#22ff66" onclick="startGame('beginner')">
@@ -1278,11 +1278,13 @@ function startGame(diff) {
   // Show game screen
   showScreen('gameScreen');
 
-  // Canvas setup
-  resizeCanvas();
+  // Canvas setup — defer one frame so flex layout resolves width
   Player.x=200;
   if(animId) cancelAnimationFrame(animId);
-  gameLoop();
+  requestAnimationFrame(()=>{
+    resizeCanvas();
+    gameLoop();
+  });
 
   // Tutorial prompt first time
   if(!localStorage.getItem('tutorialSeen_v2')){
@@ -1671,7 +1673,7 @@ function showResult(){
 const TUTORIAL_STEPS=[
   {
     icon:'👷',num:'STEP 1/6',title:'あなたの役割',
-    body:'あなたは<span class="hl">稲田建設の手元作業員</span>です。重機オペレーターに指示を出しながら、根切底→砕石→捨コンの工程を管理します。重機は<span class="hl">あなたの指示なしでは動きません！</span>',
+    body:'あなたは<span class="hl">有限会社稲田建設の手元作業員</span>です。重機オペレーターに指示を出しながら、根切底→砕石→捨コンの工程を管理します。重機は<span class="hl">あなたの指示なしでは動きません！</span>',
   },
   {
     icon:'🚶',num:'STEP 2/6',title:'キャラクター移動',
