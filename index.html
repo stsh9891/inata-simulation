@@ -53,12 +53,12 @@ canvas{display:block;touch-action:none;}
 #diffScreen{background:linear-gradient(160deg,#0d1b2a,#162840,#0d1b2a);padding:20px;gap:16px;}
 .diff-heading{color:#fff;font-size:clamp(18px,3vw,26px);font-weight:900;}
 .diff-sub{color:#7a9bb5;font-size:12px;}
-.diff-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;width:min(840px,100%);}
+.diff-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;width:min(700px,100%);}
 .dcard{background:rgba(255,255,255,.05);border:2px solid rgba(255,255,255,.1);border-radius:10px;padding:18px;cursor:pointer;transition:all .2s;}
 .dcard:hover{transform:translateY(-3px);border-color:var(--clr);box-shadow:0 6px 20px rgba(0,0,0,.5);}
 .dcard .dlv{font-size:clamp(18px,3vw,22px);font-weight:900;color:var(--clr);margin-bottom:2px;}
 .dcard .den{font-size:10px;color:#666;letter-spacing:2px;margin-bottom:10px;}
-.dcard .dspec{font-size:11px;color:#aaa;line-height:2.}
+.dcard .dspec{font-size:11px;color:#aaa;line-height:2;}
 .dcard .dspec b{color:#ddd;}
 .diff-back{padding:10px 24px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#aaa;border-radius:6px;font-size:13px;cursor:pointer;}
 
@@ -82,14 +82,6 @@ canvas{display:block;touch-action:none;}
 .ssi-btns{display:flex;gap:4px;}
 .ssi-btn{background:#162840;border:1px solid #2a4060;color:#5cb8b2;padding:6px 10px;font-size:12px;font-weight:700;border-radius:4px;cursor:pointer;transition:all .1s;}
 .ssi-btn:hover{background:#1e3850;border-color:#5cb8b2;}
-.ssi-ls{display:inline-block;padding:3px 8px;border-radius:12px;font-size:11px;font-weight:700;margin-left:8px;}
-.ssi-ls.just{background:rgba(34,255,102,.15);color:#22ff66;}
-.ssi-ls.high{background:rgba(255,68,68,.15);color:#ff6666;}
-.ssi-ls.low{background:rgba(255,136,0,.15);color:#ff9900;}
-.ssi-ls.shigh{background:rgba(255,204,0,.15);color:#ffcc00;}
-.ssi-ls.slow{background:rgba(255,204,0,.15);color:#ffcc00;}
-.ssi-ls.idle{background:rgba(100,100,100,.15);color:#666;}
-.setup-hint{background:rgba(0,120,255,.08);border:1px solid rgba(0,120,255,.2);border-radius:6px;padding:12px;margin-bottom:14px;font-size:11px;color:#6aabff;line-height:1.9;}
 .setup-start-btn{width:100%;padding:16px;background:linear-gradient(135deg,#e06820,#c85510);border:none;border-radius:8px;font-size:16px;font-weight:700;color:#fff;cursor:pointer;transition:all .15s;}
 .setup-start-btn:hover{filter:brightness(1.1);}
 .setup-start-btn:disabled{opacity:.4;cursor:not-allowed;}
@@ -135,18 +127,17 @@ canvas{display:block;touch-action:none;}
 /* Bottom panel */
 #bottomPanel{background:rgba(5,10,18,.95);border-top:2px solid #1a2a3a;display:flex;flex-shrink:0;z-index:5;min-height:0;}
 
-#ls80xPanel{width:140px;border-right:1px solid #1a2a3a;padding:7px;flex-shrink:0;}
+/* LS-80X LED Panel */
+#ls80xPanel{width:150px;border-right:1px solid #1a2a3a;padding:7px;flex-shrink:0;}
 .lsp-title{color:#4a6a7a;font-size:8px;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;}
-.ls-display{background:#000;border:1px solid #1a2a3a;border-radius:3px;padding:6px;text-align:center;min-height:46px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.ls-status{font-size:clamp(12px,1.8vw,15px);font-weight:700;margin-bottom:1px;}
-.ls-status.just{color:#22ff66;}
-.ls-status.high{color:#ff4444;}
-.ls-status.low{color:#ff8800;}
-.ls-status.shigh,.ls-status.slow{color:#ffcc00;}
-.ls-status.idle{color:#333;}
-.ls-diff{color:#444;font-size:9px;}
-.ls-bar-wrap{width:100%;height:6px;background:#111;border-radius:2px;overflow:hidden;margin-top:3px;position:relative;}
-.ls-bar{height:100%;position:absolute;border-radius:2px;transition:all .15s;}
+.ls-device{background:#111;border:1px solid #1a2a3a;border-radius:4px;padding:5px;display:flex;flex-direction:column;align-items:center;gap:2px;}
+.ls-device-label{color:#4a6a7a;font-size:7px;letter-spacing:2px;margin-bottom:2px;}
+.ls-led{width:56px;height:6px;background:#1a1a1a;border-radius:2px;transition:background .1s,box-shadow .1s;}
+.ls-led-center{width:56px;height:8px;background:#1a1a1a;border-radius:2px;transition:background .1s,box-shadow .1s;}
+.ls-led.on-hi{background:#e03020;box-shadow:0 0 5px #e03020;}
+.ls-led.on-lo{background:#2080e0;box-shadow:0 0 5px #2080e0;}
+.ls-led-center.on-just{background:#22ee66;box-shadow:0 0 6px #22ee66;}
+.ls-mm-val{color:#5cb8b2;font-size:10px;font-weight:700;text-align:center;margin-top:3px;}
 
 /* Staff panel */
 #staffPanel{width:130px;border-right:1px solid #1a2a3a;padding:7px;flex-shrink:0;}
@@ -171,7 +162,6 @@ canvas{display:block;touch-action:none;}
 .abt.danger{border-color:#ff4444;color:#ff4444;}
 .abt.danger:hover:not(:disabled){background:rgba(255,68,68,.15);}
 .abt.big{padding:10px 16px;font-size:clamp(12px,1.8vw,14px);}
-#hintBox{background:rgba(0,100,200,.08);border:1px solid rgba(0,100,200,.2);border-radius:5px;padding:7px;margin-top:6px;font-size:10px;color:#5a9fff;line-height:1.8;display:none;}
 
 /* Virtual joystick */
 #joystickWrap{position:absolute;bottom:8px;left:8px;z-index:20;touch-action:none;pointer-events:none;}
@@ -213,6 +203,10 @@ canvas{display:block;touch-action:none;}
 .rs-btn{flex:1;padding:13px;border:none;border-radius:7px;font-size:14px;font-weight:700;cursor:pointer;}
 .rs-btn.primary{background:linear-gradient(135deg,#e06820,#c85510);color:#fff;}
 .rs-btn.secondary{background:rgba(255,255,255,.08);color:#ccc;border:1px solid rgba(255,255,255,.15);}
+.rs-section-table{width:100%;border-collapse:collapse;margin-bottom:14px;}
+.rs-section-table th{background:#0a1622;color:#4a6a7a;padding:7px 9px;text-align:center;font-size:10px;border-bottom:1px solid #1a2a3a;}
+.rs-section-table td{padding:7px 9px;border-bottom:1px solid #0a1622;font-size:11px;color:#bbb;text-align:center;}
+.rs-section-heading{color:#5cb8b2;font-size:13px;font-weight:700;margin:14px 0 6px;}
 
 @media(max-width:700px){
   #ls80xPanel{display:none;}
@@ -257,11 +251,11 @@ canvas{display:block;touch-action:none;}
       スタッフ（測量棒）でレーザーの高さを確認し、「掘って」「戻して」「OK」の判断をオペレーターに伝えます。</p>
       <div class="ht-diagram">  ┌─────────────────────────────────────┐
   │         RL-H5A レーザー水平線          │← 空中の赤い線
-  ├─────────────────────────────────────┤← 基準面 GL+1000
+  ├─────────────────────────────────────┤← 基準面 GL+???mm（毎回変わる）
   │    地表面 GL±0                        │
   │         [バックホウ]  [あなた]         │
   │    ╔════════════════╗                │
-  │    ║  根切穴(10m)   ║   ← 5区画      │
+  │    ║  根切穴(5区画) ║   ← 画面中央   │
   │    ║ 砕石層         ║                │
   │    ║ 捨コン層       ║                │
   └────╚════════════════╝────────────────┘</div>
@@ -270,17 +264,18 @@ canvas{display:block;touch-action:none;}
     <div class="ht-card">
       <h3>📐 スタッフ値の計算方法</h3>
       <p><span class="hl">スタッフ値</span>とは、レーザー光線をスタッフ（測量棒）に当てたときの読み取り値です。<br>
-      地面が低い（深い）ほどスタッフ値は大きくなります。</p>
-      <div class="ht-diagram">レーザー実高(GL基準) = 基準面(GL+1000) + レーザーオフセット
+      基準面・レーザー高さは毎回ランダムです。</p>
+      <div class="ht-diagram">レーザー実高(GL基準) = 基準面(GL+X) + レーザーオフセット
 
 ①根切底スタッフ = レーザー実高 + 根切深さ
 ②砕石上端スタッフ = ①根切底スタッフ − 砕石厚
 ③捨コン上端スタッフ = ②砕石上端スタッフ − 捨コン厚
 
-例）レーザー実高=1350mm、根切深さ=2000mm、砕石150mm、捨コン80mm
-  ①根切底:  1350 + 2000 = 3350mm
-  ②砕石上端: 3350 − 150 = 3200mm
-  ③捨コン:  3200 − 80  = 3120mm</div>
+例）基準面=GL+700、レーザー=+410mm、根切=1800mm、砕石120mm、捨コン60mm
+  レーザー実高: 700+410 = 1110mm
+  ①根切底:  1110 + 1800 = 2910mm
+  ②砕石上端: 2910 − 120 = 2790mm
+  ③捨コン:  2790 − 60  = 2730mm</div>
     </div>
 
     <div class="ht-card">
@@ -294,8 +289,9 @@ canvas{display:block;touch-action:none;}
       </div>
       <p style="margin-top:10px;font-size:11px;color:#8a9aaa;">
         ▶ 各区画で「初回3バケット」自動掘削→深さ確認→追加指示→OK→次の区画へ進む<br>
-        ▶ バックホウは1指示=バケット1杯分だけ動く（0.25〜0.7㎥中型重機）<br>
-        ▶ 微調整は自分でレーキ・スコップを使って行える
+        ▶ バックホウは1指示=バケット1杯分だけ動く（280mm）<br>
+        ▶ 微調整は手動で±10mmできる。整地（レイキ）で砕石を均せる<br>
+        ▶ LS-80Xの読みはあなたの立ち位置のリアルタイム値（±5mm許容）
       </p>
     </div>
 
@@ -303,14 +299,14 @@ canvas{display:block;touch-action:none;}
       <h3>📏 計測・指示の方法</h3>
       <p>穴の近くに移動すると「深さ確認」ボタンが有効になります。</p>
       <div class="ht-diagram">① 「深さ確認」ボタン押す → スタッフを穴に当てる
-② LS-80Xの表示を見る
-   ◉ ジャスト！      → 「この深さでOK」を押す
-   ▲ やや高い/高すぎ → 「掘り増し指示」を押す
-   ▼ やや低い/低すぎ → 「土を戻す指示」を押す
-   ※ わずかな調整は「手動調整（レーキ等）」も可能
+② LS-80XのLEDバーを見る
+   ◉ 中央LED緑          → 「この深さでOK」を押す
+   ▲ 上方向LEDs点灯     → 「掘り増し指示」を押す
+   ▼ 下方向LEDs点灯     → 「土を戻す指示」を押す
+   ※ わずかな調整は「手動調整 ±10mm」も可能
 
-③ OKを出すと、バックホウは後ろの区画へ移動
-④ 全5区画がOKになると次の工程へ進む</div>
+③ 立ち位置を変えると違う箇所の深さが読める（断面ごとに深さが異なる）
+④ OKを出すと次の区画へ移動</div>
     </div>
 
     <div class="ht-card">
@@ -340,19 +336,15 @@ canvas{display:block;touch-action:none;}
   <div class="diff-grid">
     <div class="dcard" style="--clr:#22cc66" onclick="selectDiff('beginner')">
       <div class="dlv">初級</div><div class="den">BEGINNER</div>
-      <div class="dspec">レーザー高：<b>表示あり</b><br>ヒント：<b>あり</b><br>許容誤差：<b>±50mm</b><br>制限時間：<b>なし</b><br>倍率：<b>×1.0</b></div>
+      <div class="dspec">制限時間：<b>なし</b><br>倍率：<b>×1.0</b><br>許容誤差：<b>±5mm</b></div>
     </div>
     <div class="dcard" style="--clr:#ffcc00" onclick="selectDiff('intermediate')">
       <div class="dlv">中級</div><div class="den">INTERMEDIATE</div>
-      <div class="dspec">レーザー高：<b>表示あり</b><br>ヒント：<b>なし</b><br>許容誤差：<b>±30mm</b><br>制限時間：<b>なし</b><br>倍率：<b>×1.3</b></div>
+      <div class="dspec">制限時間：<b>5分</b><br>倍率：<b>×1.3</b><br>許容誤差：<b>±5mm</b></div>
     </div>
     <div class="dcard" style="--clr:#ff8800" onclick="selectDiff('advanced')">
       <div class="dlv">上級</div><div class="den">ADVANCED</div>
-      <div class="dspec">レーザー高：<b>非表示</b><br>ヒント：<b>なし</b><br>許容誤差：<b>±20mm</b><br>制限時間：<b>5分</b><br>倍率：<b>×1.8</b></div>
-    </div>
-    <div class="dcard" style="--clr:#ff4444" onclick="selectDiff('master')">
-      <div class="dlv">匠</div><div class="den">MASTER</div>
-      <div class="dspec">レーザー高：<b>非表示</b><br>ヒント：<b>なし</b><br>許容誤差：<b>±10mm</b><br>制限時間：<b>3分</b><br>端数：<b>あり</b><br>倍率：<b>×2.5</b></div>
+      <div class="dspec">制限時間：<b>3分</b><br>倍率：<b>×1.8</b><br>端数：<b>あり</b><br>許容誤差：<b>±5mm</b></div>
     </div>
   </div>
   <button class="diff-back" onclick="showScreen('titleScreen')">← タイトルへ</button>
@@ -366,17 +358,15 @@ canvas{display:block;touch-action:none;}
 
     <div class="setup-params">
       <h3>設計値（問題パラメータ）</h3>
-      <div class="setup-row"><span class="slabel">基準面</span><span class="sval">GL+1000mm</span></div>
+      <div class="setup-row"><span class="slabel">基準面</span><span class="sval" id="svGlRef">GL+???mm</span></div>
       <div class="setup-row"><span class="slabel">レーザー高さ（基準面から）</span><span class="sval" id="svLaser">---</span></div>
       <div class="setup-row"><span class="slabel">根切底 GL</span><span class="sval" id="svGL">---</span></div>
       <div class="setup-row"><span class="slabel">砕石厚</span><span class="sval" id="svGravel">---</span></div>
       <div class="setup-row"><span class="slabel">捨コン厚</span><span class="sval" id="svConcrete">---</span></div>
     </div>
 
-    <div id="setupHint" class="setup-hint" style="display:none;"></div>
-
     <div class="setup-staff-block">
-      <h3>スタッフ値設定（±ボタンで調整 → LS-80X確認）</h3>
+      <h3>スタッフ値設定（±ボタンで調整）</h3>
       <div class="setup-staff-item">
         <div class="ssi-label">①根切底スタッフ値</div>
         <div class="ssi-row">
@@ -387,7 +377,6 @@ canvas{display:block;touch-action:none;}
             <button class="ssi-btn" onclick="setupAdjust('ps1',10)">+10</button>
             <button class="ssi-btn" onclick="setupAdjust('ps1',-10)">-10</button>
           </div>
-          <span class="ssi-ls idle" id="ssLS1">---</span>
         </div>
       </div>
       <div class="setup-staff-item">
@@ -400,7 +389,6 @@ canvas{display:block;touch-action:none;}
             <button class="ssi-btn" onclick="setupAdjust('ps2',10)">+10</button>
             <button class="ssi-btn" onclick="setupAdjust('ps2',-10)">-10</button>
           </div>
-          <span class="ssi-ls idle" id="ssLS2">---</span>
         </div>
       </div>
       <div class="setup-staff-item">
@@ -413,7 +401,6 @@ canvas{display:block;touch-action:none;}
             <button class="ssi-btn" onclick="setupAdjust('ps3',10)">+10</button>
             <button class="ssi-btn" onclick="setupAdjust('ps3',-10)">-10</button>
           </div>
-          <span class="ssi-ls idle" id="ssLS3">---</span>
         </div>
       </div>
     </div>
@@ -425,7 +412,7 @@ canvas{display:block;touch-action:none;}
 <!-- ============================== GAME ============================== -->
 <div id="gameScreen" class="screen">
   <div id="hud">
-    <div class="hi"><div class="hl">深さ</div><div class="hv" id="hudDepth">0mm</div></div>
+    <div class="hi"><div class="hl">深さ(平均)</div><div class="hv" id="hudDepth">0mm</div></div>
     <div class="hsep">|</div>
     <div class="hi"><div class="hl">根切底GL</div><div class="hv" id="hudGL">---</div></div>
     <div class="hsep">|</div>
@@ -455,12 +442,21 @@ canvas{display:block;touch-action:none;}
   <div id="bottomPanel">
     <div id="ls80xPanel">
       <div class="lsp-title">LS-80X センサー</div>
-      <div class="ls-display">
-        <div class="ls-status idle" id="lsStatus">● 待機</div>
-        <div class="ls-diff" id="lsDiff"></div>
+      <div class="ls-device">
+        <div class="ls-device-label">TOPCON</div>
+        <div id="led-hi-5" class="ls-led"></div>
+        <div id="led-hi-4" class="ls-led"></div>
+        <div id="led-hi-3" class="ls-led"></div>
+        <div id="led-hi-2" class="ls-led"></div>
+        <div id="led-hi-1" class="ls-led"></div>
+        <div id="led-center" class="ls-led-center"></div>
+        <div id="led-lo-1" class="ls-led"></div>
+        <div id="led-lo-2" class="ls-led"></div>
+        <div id="led-lo-3" class="ls-led"></div>
+        <div id="led-lo-4" class="ls-led"></div>
+        <div id="led-lo-5" class="ls-led"></div>
       </div>
-      <div class="ls-bar-wrap"><div class="ls-bar" id="lsBar" style="width:0;left:50%;background:#222;"></div></div>
-      <div style="display:flex;justify-content:space-between;font-size:8px;color:#333;margin-top:2px;"><span>低</span><span>高</span></div>
+      <div class="ls-mm-val" id="lsMmVal">-- mm</div>
     </div>
     <div id="staffPanel">
       <div class="sp-title">スタッフ（設定済）</div>
@@ -479,7 +475,8 @@ canvas{display:block;touch-action:none;}
           <button class="abt" id="btnCheck" onclick="doCheck()" disabled>📏 深さ確認</button>
           <button class="abt" id="btnDigMore" onclick="doDigMore()" disabled>⛏ 掘り増し指示</button>
           <button class="abt" id="btnReturnSoil" onclick="doReturnSoil()" disabled>↑ 土を戻す指示</button>
-          <button class="abt" id="btnManual" onclick="doManual()" disabled>🔧 手動調整</button>
+          <button class="abt" id="btnManualAdd" onclick="doManualAdd()" disabled>🔧 +10mm 削る</button>
+          <button class="abt" id="btnManualRem" onclick="doManualRem()" disabled>🔧 -10mm 埋める</button>
           <button class="abt" id="btnSectionOK" onclick="doSectionOK()" disabled>✓ この深さでOK</button>
         </div>
       </div>
@@ -499,6 +496,7 @@ canvas{display:block;touch-action:none;}
           <button class="abt" id="btnGrvCheck" onclick="doGrvCheck()" disabled>📏 高さ確認</button>
           <button class="abt" id="btnGrvAdd" onclick="doGrvAdd()" disabled>➕ 砕石追加指示</button>
           <button class="abt" id="btnGrvRemove" onclick="doGrvRemove()" disabled>➖ 取り除く</button>
+          <button class="abt" id="btnRake" onclick="doRake()" disabled>⚒ 整地（レイキ）</button>
           <button class="abt" id="btnGrvOK" onclick="doGrvOK()" disabled>✓ この高さでOK</button>
         </div>
       </div>
@@ -520,7 +518,6 @@ canvas{display:block;touch-action:none;}
       <div id="grpFinish" style="display:none;margin-top:6px;">
         <button class="abt big active-s" style="width:100%;" onclick="showResult()">🏁 工事完了 → 採点へ</button>
       </div>
-      <div id="hintBox"></div>
     </div>
   </div>
 </div>
@@ -548,6 +545,11 @@ canvas{display:block;touch-action:none;}
       <thead><tr><th>計測項目</th><th>設定値</th><th>正解値</th><th>誤差</th><th>判定</th></tr></thead>
       <tbody id="rsTbody"></tbody>
     </table>
+    <div class="rs-section-heading">【区画別 根切深さ評価】</div>
+    <table class="rs-section-table" id="rsSectionTable">
+      <thead><tr><th>区画</th><th>実測平均</th><th>目標深さ</th><th>誤差</th><th>判定</th></tr></thead>
+      <tbody id="rsSectionTbody"></tbody>
+    </table>
     <div class="rs-impacts" id="rsImpacts" style="display:none;">
       <h3>⚠ 施工への影響</h3><ul id="rsImpactList"></ul>
     </div>
@@ -563,18 +565,22 @@ canvas{display:block;touch-action:none;}
 // ============================================================
 // CONSTANTS & CONFIG
 // ============================================================
-const NUM_SECTIONS = 5;          // 10m pit / 5 sections of 2m each
-const BUCKET_DEPTH = 280;        // mm removed per bucket scoop
-const GRAVEL_PER_DUMP = 50;      // mm of gravel per operator dump
-const INITIAL_BUCKETS = 3;       // auto-scoops on first approach
-const RETURN_SOIL_AMT = 80;      // mm returned per "土を戻す"
-const MANUAL_ADJ = 30;           // mm per manual rake/shovel action
+const NUM_SECTIONS = 5;
+const BUCKET_DEPTH = 280;
+const GRAVEL_PER_DUMP = 50;
+const INITIAL_BUCKETS = 3;
+const RETURN_SOIL_AMT = 80;
+const MANUAL_ADJ = 10;
+const PROFILE_COLS = 8;
+const TOL = 5;
+
+const GL_REF_OPTIONS = [540,580,620,660,700,740,780,820,860,900,930,960];
+const LASER_REF_OPTIONS = [270,310,340,370,410,450,490,520,560,600];
 
 const DIFF = {
-  beginner:     {name:'初級',clr:'#22cc66',showLaser:true, hint:true, tol:50, timeLimit:0,   frac:false,emgPen:5, bonus:1.0},
-  intermediate: {name:'中級',clr:'#ffcc00',showLaser:true, hint:false,tol:30, timeLimit:0,   frac:false,emgPen:10,bonus:1.3},
-  advanced:     {name:'上級',clr:'#ff8800',showLaser:false,hint:false,tol:20, timeLimit:300, frac:false,emgPen:20,bonus:1.8},
-  master:       {name:'匠',  clr:'#ff4444',showLaser:false,hint:false,tol:10, timeLimit:180, frac:true, emgPen:40,bonus:2.5},
+  beginner:     {name:'初級', clr:'#22cc66', timeLimit:0,   mult:1.0, fracNum:false},
+  intermediate: {name:'中級', clr:'#ffcc00', timeLimit:300, mult:1.3, fracNum:false},
+  advanced:     {name:'上級', clr:'#ff8800', timeLimit:180, mult:1.8, fracNum:true},
 };
 
 // ============================================================
@@ -582,33 +588,27 @@ const DIFF = {
 // ============================================================
 const G = {
   diff:null,
-  phase:'idle', // 'idle'|'excavation'|'gravel'|'concrete'|'done'
+  phase:'idle',
 
-  // Problem
+  glRef:700,
   glDepth:0, gravelThk:0, concreteThk:0,
   laserHRef:0, laserHGL:0,
   s1:0, s2:0, s3:0,
 
-  // Player staff (set in setup)
   ps1:1000, ps2:1000, ps3:1000,
 
-  // Sections: each {soilRemoved, gravelAdded, concreteAdded, excOK, grvOK, conOK}
   sections:[],
-  curSec:0,  // current working section (0-4)
+  curSec:0,
 
-  // Active measurement phase
-  measType:null, // 'exc'|'grv'|'con'
+  measType:null,
   measuring:false,
 
-  // Backhoe animation
-  bhState:'idle', // 'idle'|'digging'|'returning'|'moving'|'dumping'
-  bhAnim:0,       // 0..1 animation progress
-  bhDir:1,        // 1=right,-1=left (for moving)
+  bhState:'idle',
+  bhAnim:0,
+  bhDir:1,
 
-  // Score & timer
   score:0, timeLeft:0, timerInterval:null,
 
-  // Flags
   safetyDone:false,
   excAllDone:false, grvAllDone:false, conDone:false,
 
@@ -616,9 +616,47 @@ const G = {
 };
 
 function makeSection(){
-  return {soilRemoved:0, gravelAdded:0, concreteAdded:0,
-          excOK:false, grvOK:false, conOK:false,
-          initialDone:false, buckets:0};
+  return {
+    soilProfile: new Array(PROFILE_COLS).fill(0),
+    gravelProfile: new Array(PROFILE_COLS).fill(0),
+    conProfile: new Array(PROFILE_COLS).fill(0),
+    excOK:false, grvOK:false, conOK:false,
+    initialDone:false, buckets:0,
+    finalAvgDepth:0, finalAvgGravel:0
+  };
+}
+
+function profileAvg(arr){
+  return arr.reduce((a,b)=>a+b,0)/arr.length;
+}
+
+function applyDig(sec, amount){
+  for(let c=0;c<PROFILE_COLS;c++){
+    const noise=(Math.random()-0.5)*amount*0.25;
+    sec.soilProfile[c] = Math.max(0, sec.soilProfile[c] + amount + noise);
+  }
+}
+
+function applyReturn(sec, amount){
+  for(let c=0;c<PROFILE_COLS;c++){
+    const noise=(Math.random()-0.5)*amount*0.25;
+    sec.soilProfile[c] = Math.max(0, sec.soilProfile[c] - amount + noise);
+  }
+}
+
+function applyGravelDump(sec, amount){
+  for(let c=0;c<PROFILE_COLS;c++){
+    const relPos=(c+0.5)/PROFILE_COLS;
+    const bellFactor=Math.exp(-Math.pow((relPos-0.5)/0.3,2));
+    const val=amount*(0.4+bellFactor*0.9)+(Math.random()-0.5)*amount*0.35;
+    sec.gravelProfile[c]=Math.max(0, sec.gravelProfile[c]+val);
+  }
+}
+
+function applyGravelRemove(sec, amount){
+  for(let c=0;c<PROFILE_COLS;c++){
+    sec.gravelProfile[c]=Math.max(0, sec.gravelProfile[c]-amount);
+  }
 }
 
 // ============================================================
@@ -675,18 +713,11 @@ function updateJoy(t){
 // ============================================================
 const canvas=document.getElementById('gameCanvas');
 const ctx=canvas.getContext('2d');
-let W=800,H=450,camX=0,groundY=0,refLineY=0,scaleV=0;
+let W=800,H=450,groundY=0,refLineY=0,scaleV=0;
+let PIT_LEFT=0,PIT_W=0,SEC_W=0;
 
-// World geometry
-const PIT_LEFT=380;          // world x where pit starts
-const SEC_W=160;             // px per section (=2m)
-const PIT_W=NUM_SECTIONS*SEC_W; // total pit width
-const PIT_RIGHT=PIT_LEFT+PIT_W;
-
-// Backhoe world x (centers on current section)
 function bhWorldX(){return PIT_LEFT + G.curSec*SEC_W + SEC_W*0.7;}
 
-// Player
 const Player={x:250,facingRight:true,walking:false,walkFrame:0,walkTimer:0,hasStaff:false};
 
 let animId=null,frameCount=0;
@@ -697,8 +728,12 @@ function resizeCanvas(){
   if(W<=0||H<=0){W=window.innerWidth;H=Math.max(200,window.innerHeight-160);}
   canvas.width=W;canvas.height=H;
   groundY=H*0.42;
-  refLineY=groundY-H*0.11;
-  scaleV=(H*0.50)/2500; // 2500mm = 50% of canvas height
+  refLineY=groundY - G.laserHGL*scaleV;
+  scaleV=(H*0.50)/2500;
+  PIT_LEFT=Math.round(W*0.20);
+  PIT_W=Math.round(W*0.60);
+  SEC_W=Math.round(PIT_W/NUM_SECTIONS);
+  refLineY=groundY - (G.laserHGL>0?G.laserHGL:1000)*scaleV;
 }
 window.addEventListener('resize',resizeCanvas);
 
@@ -706,22 +741,17 @@ window.addEventListener('resize',resizeCanvas);
 // RENDERING
 // ============================================================
 function gameLoop(){
-  // Player movement
+  const s=H/400;
   const spd=3.2;
   let moved=false;
   if(Keys['ArrowLeft']||Keys['a']||Keys['A']||(JOY.dx<-0.2)){Player.x-=spd*(JOY.active?Math.abs(JOY.dx):1);Player.facingRight=false;moved=true;}
   if(Keys['ArrowRight']||Keys['d']||Keys['D']||(JOY.dx>0.2)){Player.x+=spd*(JOY.active?Math.abs(JOY.dx):1);Player.facingRight=true;moved=true;}
-  Player.x=Math.max(20,Math.min(2400,Player.x));
+  Player.x=Math.max(10,Math.min(W-20,Player.x));
   Player.walking=moved;
   if(moved&&Player.walkTimer++>7){Player.walkFrame=(Player.walkFrame+1)%4;Player.walkTimer=0;}
 
-  // Camera
-  camX+=(Player.x-W*0.38-camX)*0.08;
-  camX=Math.max(0,Math.min(2400-W,camX));
-
-  // Backhoe animation
   updateBhAnim();
-
+  updateLiveLS();
   drawScene();
   checkProximityUI();
   frameCount++;
@@ -743,18 +773,20 @@ function drawScene(){
   if(!ctx)return;
   ctx.clearRect(0,0,W,H);
 
-  // Sky
+  // Gradient sky
   const sky=ctx.createLinearGradient(0,0,0,groundY);
-  sky.addColorStop(0,'#1a3a5c');sky.addColorStop(0.5,'#2a6090');sky.addColorStop(1,'#5a90b8');
+  sky.addColorStop(0,'#0a2040');sky.addColorStop(0.5,'#1a4e7a');sky.addColorStop(1,'#3a7aaa');
   ctx.fillStyle=sky;ctx.fillRect(0,0,W,groundY);
 
   // Clouds
-  [[300,35,22],[600,50,16],[900,30,20],[1200,45,18],[1500,32,15]].forEach(([cx,cy,r])=>{
-    const sx=((cx-camX*0.25+W*3)%(2500+W))-100;
-    ctx.fillStyle='rgba(255,255,255,0.75)';
+  const cloudData=[[W*0.15,groundY*0.2,22],[W*0.38,groundY*0.35,16],[W*0.6,groundY*0.18,20],[W*0.82,groundY*0.3,18]];
+  cloudData.forEach(([cx,cy,r])=>{
+    const ox=((frameCount*0.2)%(W+200));
+    const sx=(cx-ox+W*2)%(W+200)-100;
+    ctx.fillStyle='rgba(255,255,255,0.72)';
     ctx.beginPath();ctx.arc(sx,cy,r,0,Math.PI*2);ctx.fill();
-    ctx.beginPath();ctx.arc(sx+r*.7,cy-r*.3,r*.7,0,Math.PI*2);ctx.fill();
-    ctx.beginPath();ctx.arc(sx-r*.5,cy-r*.2,r*.5,0,Math.PI*2);ctx.fill();
+    ctx.beginPath();ctx.arc(sx+r*.75,cy-r*.35,r*.7,0,Math.PI*2);ctx.fill();
+    ctx.beginPath();ctx.arc(sx-r*.5,cy-r*.2,r*.55,0,Math.PI*2);ctx.fill();
   });
 
   // Underground
@@ -762,9 +794,14 @@ function drawScene(){
   ug.addColorStop(0,'#4a2e12');ug.addColorStop(0.5,'#3a2008');ug.addColorStop(1,'#1a0e04');
   ctx.fillStyle=ug;ctx.fillRect(0,groundY,W,H-groundY);
 
-  // Ground surface (grass top)
-  ctx.fillStyle='#3a7a28';ctx.fillRect(0,groundY,W,7);
-  ctx.fillStyle='#4a3010';ctx.fillRect(0,groundY+7,W,12);
+  // Ground surface (grass stripe)
+  const grassGrad=ctx.createLinearGradient(0,groundY,0,groundY+8);
+  grassGrad.addColorStop(0,'#4a8a30');grassGrad.addColorStop(1,'#3a7020');
+  ctx.fillStyle=grassGrad;ctx.fillRect(0,groundY,W,8);
+  // Dirt layer
+  const dirtGrad=ctx.createLinearGradient(0,groundY+8,0,groundY+22);
+  dirtGrad.addColorStop(0,'#5a3a18');dirtGrad.addColorStop(1,'#3a2008');
+  ctx.fillStyle=dirtGrad;ctx.fillRect(0,groundY+8,W,14);
 
   // Stratum lines
   ctx.strokeStyle='rgba(80,50,20,0.3)';ctx.lineWidth=1;
@@ -773,13 +810,15 @@ function drawScene(){
     ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();
   });
 
-  // Reference line GL+1000
+  // Reference line (variable)
+  const refY=groundY - G.laserHGL*scaleV;
+  const clampRefY=Math.max(3,Math.min(groundY-4,refY));
   ctx.save();ctx.setLineDash([14,8]);
-  ctx.strokeStyle='rgba(0,160,255,0.65)';ctx.lineWidth=2;
-  ctx.beginPath();ctx.moveTo(0,refLineY);ctx.lineTo(W,refLineY);ctx.stroke();
+  ctx.strokeStyle='rgba(0,160,255,0.55)';ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.moveTo(0,clampRefY);ctx.lineTo(W,clampRefY);ctx.stroke();
   ctx.restore();ctx.setLineDash([]);
   ctx.fillStyle='#3a9adf';ctx.font='bold 10px Arial';
-  ctx.fillText('基準面 GL+1000',6,refLineY-3);
+  ctx.fillText(`基準面 GL+${G.glRef}mm`,6,clampRefY-3);
 
   // GL label
   ctx.fillStyle='rgba(255,255,255,0.35)';ctx.font='9px Arial';
@@ -788,10 +827,10 @@ function drawScene(){
   // Pit and sections
   drawPit();
 
-  // Tripod
+  // Tripod (at W*0.09)
   drawTripod();
 
-  // Laser beam (after game started)
+  // Laser beam
   if(G.phase!=='idle') drawLaser();
 
   // Backhoe
@@ -805,71 +844,100 @@ function drawScene(){
 }
 
 function drawPit(){
+  const subW=SEC_W/PROFILE_COLS;
   for(let i=0;i<NUM_SECTIONS;i++){
     const sec=G.sections[i];
-    if(!sec||sec.soilRemoved<=0)continue;
-    const sx=(PIT_LEFT+i*SEC_W)-camX;
-    const sw=SEC_W;
-    const depthPx=sec.soilRemoved*scaleV;
+    if(!sec)continue;
+    for(let c=0;c<PROFILE_COLS;c++){
+      const cx=PIT_LEFT+i*SEC_W+c*subW;
+      const depth=sec.soilProfile[c];
+      if(depth<=0)continue;
+      const depthPx=depth*scaleV;
 
-    // Pit background
-    ctx.fillStyle='#1a0c04';ctx.fillRect(sx,groundY,sw,depthPx+2);
+      // Dark earth fill
+      const earthGrad=ctx.createLinearGradient(cx,groundY,cx,groundY+depthPx);
+      earthGrad.addColorStop(0,'#2a1408');earthGrad.addColorStop(1,'#140804');
+      ctx.fillStyle=earthGrad;
+      ctx.fillRect(cx,groundY,subW+1,depthPx);
 
-    // Gravel layer
-    if(sec.gravelAdded>0){
-      const gPx=sec.gravelAdded*scaleV;
-      const gTop=groundY+depthPx-gPx;
-      const gg=ctx.createLinearGradient(0,gTop,0,gTop+gPx);
-      gg.addColorStop(0,'#7a6848');gg.addColorStop(1,'#5a4828');
-      ctx.fillStyle=gg;ctx.fillRect(sx+1,gTop,sw-2,gPx);
-      for(let k=0;k<10;k++){ctx.fillStyle='#9a8858';ctx.fillRect(sx+5+(k*14)%(sw-10),gTop+2+(k*7)%(gPx>4?gPx-3:1),4,3);}
+      // Gravel layer at bottom
+      const grav=sec.gravelProfile[c];
+      if(grav>0){
+        const gravPx=grav*scaleV;
+        const gTop=groundY+depthPx-gravPx;
+        const gg=ctx.createLinearGradient(0,gTop,0,gTop+gravPx);
+        gg.addColorStop(0,'#7a6848');gg.addColorStop(1,'#5a4828');
+        ctx.fillStyle=gg;
+        ctx.fillRect(cx,gTop,subW+1,gravPx);
+        // Gravel texture dots
+        for(let k=0;k<4;k++){
+          ctx.fillStyle='#9a8858';
+          const dx2=cx+2+(k*7)%(subW-4);
+          const dy2=gTop+2+(k*5)%(Math.max(1,gravPx-3));
+          ctx.fillRect(dx2,dy2,3,2);
+        }
+      }
+
+      // Concrete on top of gravel
+      const con=sec.conProfile[c];
+      if(con>0){
+        const gravPx=grav*scaleV;
+        const conPx=con*scaleV;
+        const cTop=groundY+depthPx-gravPx-conPx;
+        ctx.fillStyle='#a8a8a8';
+        ctx.fillRect(cx,cTop,subW+1,Math.max(conPx,2));
+        ctx.fillStyle='#c0c0c0';
+        ctx.fillRect(cx,cTop,subW+1,2);
+      }
+
+      // Wall shadow (left edge of each section)
+      if(c===0){
+        const wg=ctx.createLinearGradient(cx,0,cx+12,0);
+        wg.addColorStop(0,'rgba(0,0,0,0.55)');wg.addColorStop(1,'rgba(0,0,0,0)');
+        ctx.fillStyle=wg;ctx.fillRect(cx,groundY,12,depthPx);
+      }
+      // Right wall shadow
+      if(c===PROFILE_COLS-1){
+        const wg2=ctx.createLinearGradient(cx+subW-10,0,cx+subW,0);
+        wg2.addColorStop(0,'rgba(0,0,0,0)');wg2.addColorStop(1,'rgba(0,0,0,0.55)');
+        ctx.fillStyle=wg2;ctx.fillRect(cx+subW-10,groundY,10,depthPx);
+      }
     }
 
-    // Concrete layer
-    if(sec.concreteAdded>0){
-      const gPx=sec.gravelAdded*scaleV;
-      const cPx=sec.concreteAdded*scaleV;
-      const cTop=groundY+depthPx-gPx-cPx;
-      ctx.fillStyle='#a0a0a0';ctx.fillRect(sx+1,cTop,sw-2,Math.max(cPx,3));
-      ctx.fillStyle='#b8b8b8';ctx.fillRect(sx+1,cTop,sw-2,2);
-    }
-
-    // Section wall shading
-    const wg=ctx.createLinearGradient(sx,0,sx+10,0);
-    wg.addColorStop(0,'rgba(0,0,0,0.5)');wg.addColorStop(1,'rgba(0,0,0,0)');
-    ctx.fillStyle=wg;ctx.fillRect(sx,groundY,10,depthPx);
-    const wg2=ctx.createLinearGradient(sx+sw-10,0,sx+sw,0);
-    wg2.addColorStop(0,'rgba(0,0,0,0)');wg2.addColorStop(1,'rgba(0,0,0,0.5)');
-    ctx.fillStyle=wg2;ctx.fillRect(sx+sw-10,groundY,10,depthPx);
-
-    // Approved indicator
-    if(sec.excOK){
-      ctx.strokeStyle='rgba(34,204,102,0.4)';ctx.lineWidth=1;
+    // excOK green indicator at bottom
+    const avgD=profileAvg(sec.soilProfile);
+    if(sec.excOK&&avgD>0){
+      const sx=PIT_LEFT+i*SEC_W;
+      const depthPx=avgD*scaleV;
+      ctx.strokeStyle='rgba(34,204,102,0.45)';ctx.lineWidth=1.5;
       ctx.setLineDash([3,3]);
-      ctx.beginPath();ctx.moveTo(sx+2,groundY+depthPx);ctx.lineTo(sx+sw-2,groundY+depthPx);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(sx+2,groundY+depthPx);ctx.lineTo(sx+SEC_W-2,groundY+depthPx);ctx.stroke();
       ctx.setLineDash([]);
     }
   }
+
   // Pit edge timbers
-  const pitSX=(PIT_LEFT)-camX;
-  const pitEX=(PIT_RIGHT)-camX;
+  const pitSX=PIT_LEFT;
+  const pitEX=PIT_LEFT+PIT_W;
   ctx.fillStyle='#6a4a20';ctx.fillRect(pitSX-8,groundY-4,8,H-groundY+4);
+  ctx.fillStyle='#8a6030';ctx.fillRect(pitSX-8,groundY-4,8,6);
   ctx.fillStyle='#6a4a20';ctx.fillRect(pitEX,groundY-4,8,H-groundY+4);
+  ctx.fillStyle='#8a6030';ctx.fillRect(pitEX,groundY-4,8,6);
 }
 
 function drawTripod(){
-  const tx=150-camX;
-  if(tx<-70||tx>W+70)return;
+  const tx=Math.round(W*0.09);
+  const s=H/400;
   // Legs
-  ctx.strokeStyle='#888';ctx.lineWidth=3;ctx.lineCap='round';
-  [[tx-20,groundY],[tx+20,groundY],[tx,groundY]].forEach(([x,y])=>{
-    ctx.beginPath();ctx.moveTo(tx,groundY-58);ctx.lineTo(x,y);ctx.stroke();
+  ctx.strokeStyle='#888';ctx.lineWidth=3*s;ctx.lineCap='round';
+  [[tx-20*s,groundY],[tx+20*s,groundY],[tx,groundY]].forEach(([x,y])=>{
+    ctx.beginPath();ctx.moveTo(tx,groundY-58*s);ctx.lineTo(x,y);ctx.stroke();
   });
   // Head
-  ctx.fillStyle='#e06820';ctx.fillRect(tx-15,groundY-66,30,14);
-  ctx.fillStyle='#c85510';ctx.fillRect(tx-9,groundY-78,18,13);
-  ctx.fillStyle='rgba(100,200,255,0.8)';ctx.beginPath();ctx.arc(tx,groundY-71,4,0,Math.PI*2);ctx.fill();
-  ctx.fillStyle='#e06820';ctx.font='bold 9px Arial';ctx.fillText('RL-H5A',tx-18,groundY-82);
+  ctx.fillStyle='#e06820';ctx.fillRect(tx-15*s,groundY-66*s,30*s,14*s);
+  ctx.fillStyle='#c85510';ctx.fillRect(tx-9*s,groundY-78*s,18*s,13*s);
+  ctx.fillStyle='rgba(100,200,255,0.8)';ctx.beginPath();ctx.arc(tx,groundY-71*s,4*s,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#e06820';ctx.font=`bold ${9*s}px Arial`;ctx.fillText('RL-H5A',tx-18*s,groundY-82*s);
 }
 
 function drawLaser(){
@@ -881,15 +949,13 @@ function drawLaser(){
   ctx.shadowColor='#ff2020';ctx.shadowBlur=5;
   ctx.beginPath();ctx.moveTo(0,cly);ctx.lineTo(W,cly);ctx.stroke();
   ctx.restore();ctx.setLineDash([]);
-  if(DIFF[G.diff]?.showLaser){
-    ctx.fillStyle='rgba(255,80,60,0.9)';ctx.font='bold 9px Arial';
-    const sign=G.laserHRef>=0?'+':'';
-    ctx.fillText(`RL-H5A  基準面より${sign}${G.laserHRef}mm`,W-180,cly-3);
-  }
+  // Always show laser label
+  ctx.fillStyle='rgba(255,80,60,0.9)';ctx.font='bold 9px Arial';
+  ctx.fillText(`RL-H5A  基準面より+${G.laserHRef}mm`,W-185,cly-3);
 }
 
 function drawBackhoe(){
-  // Compute world x based on state
+  const s=H/400;
   let bwx=bhWorldX();
   if(G.bhState==='moving'){
     const targetSec=Math.max(0,G.curSec-1);
@@ -897,21 +963,23 @@ function drawBackhoe(){
     const endX=bhWorldX();
     bwx=startX+(endX-startX)*G.bhAnim;
   }
-  const bx=bwx-camX;
+  const bx=bwx;
   if(bx<-150||bx>W+150)return;
   const by=groundY;
 
   // Tracks
-  ctx.fillStyle='#2a2a2a';ctx.fillRect(bx-40,by-10,80,10);
-  ctx.fillStyle='#3a3a3a';for(let i=0;i<6;i++)ctx.fillRect(bx-38+i*12,by-9,9,8);
+  ctx.fillStyle='#2a2a2a';ctx.fillRect(bx-40*s,by-10*s,80*s,10*s);
+  ctx.fillStyle='#3a3a3a';for(let i=0;i<6;i++)ctx.fillRect(bx-38*s+i*12*s,by-9*s,9*s,8*s);
 
   // Body
-  ctx.fillStyle='#c07018';ctx.fillRect(bx-30,by-44,60,36);
-  ctx.fillStyle='rgba(0,0,0,0.15)';ctx.fillRect(bx-30,by-44,60,7);
+  const bodyGrad=ctx.createLinearGradient(bx-30*s,by-44*s,bx+30*s,by-8*s);
+  bodyGrad.addColorStop(0,'#d07818');bodyGrad.addColorStop(1,'#a06010');
+  ctx.fillStyle=bodyGrad;ctx.fillRect(bx-30*s,by-44*s,60*s,36*s);
+  ctx.fillStyle='rgba(0,0,0,0.15)';ctx.fillRect(bx-30*s,by-44*s,60*s,7*s);
 
   // Cab
-  ctx.fillStyle='#a06010';ctx.fillRect(bx-16,by-64,34,22);
-  ctx.fillStyle='rgba(120,200,255,0.65)';ctx.fillRect(bx-12,by-60,26,15);
+  ctx.fillStyle='#a06010';ctx.fillRect(bx-16*s,by-64*s,34*s,22*s);
+  ctx.fillStyle='rgba(120,200,255,0.65)';ctx.fillRect(bx-12*s,by-60*s,26*s,15*s);
 
   // Arm animation
   let armAng=-0.7;
@@ -926,60 +994,77 @@ function drawBackhoe(){
     armAng=-0.6+Math.sin(G.bhAnim*Math.PI)*0.3;
     bucketAng=0.6+Math.sin(G.bhAnim*Math.PI)*0.8;
   } else {
-    armAng=-0.7+Math.sin(frameCount*0.02)*0.05; // subtle idle sway
+    armAng=-0.7+Math.sin(frameCount*0.02)*0.05;
   }
 
   ctx.save();
-  ctx.translate(bx-10,by-36);
+  ctx.translate(bx-10*s,by-36*s);
   ctx.rotate(armAng);
-  ctx.fillStyle='#b06010';ctx.fillRect(-4,-42,8,44);
-  ctx.translate(0,-40);
+  ctx.fillStyle='#b06010';ctx.fillRect(-4*s,-42*s,8*s,44*s);
+  ctx.translate(0,-40*s);
   ctx.rotate(0.4+Math.sin(frameCount*0.025)*0.1);
-  ctx.fillStyle='#986008';ctx.fillRect(-3,-28,6,30);
-  ctx.translate(0,-26);
+  ctx.fillStyle='#986008';ctx.fillRect(-3*s,-28*s,6*s,30*s);
+  ctx.translate(0,-26*s);
   ctx.rotate(bucketAng);
-  ctx.fillStyle='#777';ctx.fillRect(-10,-7,20,13);
-  for(let i=0;i<4;i++){ctx.fillStyle='#555';ctx.fillRect(-9+i*5,-9,4,5);}
+  ctx.fillStyle='#777';ctx.fillRect(-10*s,-7*s,20*s,13*s);
+  for(let i=0;i<4;i++){ctx.fillStyle='#555';ctx.fillRect((-9+i*5)*s,-9*s,4*s,5*s);}
   ctx.restore();
 
-  // "待機中" sign
+  // Status label
   if(G.bhState==='idle'&&G.phase!=='idle'){
-    ctx.fillStyle='rgba(255,220,80,0.85)';ctx.font='bold 9px Arial';
+    ctx.fillStyle='rgba(255,220,80,0.85)';ctx.font=`bold ${9*s}px Arial`;
     const lbl=G.phase==='excavation'?'掘削待機':G.phase==='gravel'?'砕石待機':'コンクリ待機';
-    ctx.fillText(lbl,bx-20,by-68);
+    ctx.fillText(lbl,bx-20*s,by-68*s);
   }
 }
 
 function drawPlayer(){
-  const px=Player.x-camX;
+  const s=H/400;
+  const px=Player.x;
   if(px<-40||px>W+40)return;
-  const py=groundY-44;
+  const py=groundY-44*s;
 
   ctx.save();
-  if(!Player.facingRight){ctx.scale(-1,1);ctx.translate(-2*px-24,0);}
+  if(!Player.facingRight){ctx.scale(-1,1);ctx.translate(-2*px-24*s,0);}
 
-  const walk=Player.walking?Math.sin(Player.walkFrame*Math.PI/2)*8:0;
+  const walk=Player.walking?Math.sin(Player.walkFrame*Math.PI/2)*8*s:0;
 
   // Boots
-  ctx.fillStyle='#222';ctx.fillRect(px+2,py+36,9,8);ctx.fillRect(px+14,py+36,9,8);
+  ctx.fillStyle='#222';ctx.fillRect(px+2*s,py+36*s,9*s,8*s);ctx.fillRect(px+14*s,py+36*s,9*s,8*s);
   // Pants
-  ctx.fillStyle='#1a3a7a';ctx.fillRect(px+2,py+22,9,16+walk*.3);ctx.fillRect(px+14,py+22,9,16-walk*.3);
+  ctx.fillStyle='#1a3a7a';ctx.fillRect(px+2*s,py+22*s,9*s,16*s+walk*.3);ctx.fillRect(px+14*s,py+22*s,9*s,16*s-walk*.3);
   // Vest
-  ctx.fillStyle='#e06820';ctx.fillRect(px+2,py+8,20,16);
+  ctx.fillStyle='#e06820';ctx.fillRect(px+2*s,py+8*s,20*s,16*s);
   // Reflective strips
-  ctx.fillStyle='#ffcc00';ctx.fillRect(px+2,py+12,20,3);ctx.fillRect(px+2,py+18,20,3);
+  ctx.fillStyle='#ffcc00';ctx.fillRect(px+2*s,py+12*s,20*s,3*s);ctx.fillRect(px+2*s,py+18*s,20*s,3*s);
   // Arms
-  ctx.fillStyle='#e06820';ctx.fillRect(px-3,py+9,5,12+walk*.4);ctx.fillRect(px+22,py+9,5,12-walk*.4);
+  ctx.fillStyle='#e06820';ctx.fillRect(px-3*s,py+9*s,5*s,12*s+walk*.4);ctx.fillRect(px+22*s,py+9*s,5*s,12*s-walk*.4);
   // Head
-  ctx.fillStyle='#f0c090';ctx.fillRect(px+5,py+1,14,10);
+  ctx.fillStyle='#f0c090';ctx.fillRect(px+5*s,py+1*s,14*s,10*s);
   // Helmet
-  ctx.fillStyle='#ff8800';ctx.fillRect(px+3,py-2,18,8);ctx.fillRect(px+1,py+3,20,4);
+  ctx.fillStyle='#ff8800';ctx.fillRect(px+3*s,py-2*s,18*s,8*s);ctx.fillRect(px+1*s,py+3*s,20*s,4*s);
 
   // Staff if measuring
   if(Player.hasStaff){
-    ctx.fillStyle='#cc4400';ctx.fillRect(px+26,py-28,4,72);
-    ctx.fillStyle='#22cc66';ctx.fillRect(px+23,py-8,10,9);
-    ctx.font='7px Arial';ctx.fillStyle='#22cc66';ctx.fillText('LS-80X',px+17,py+1);
+    const info=getInfoAtPlayer();
+    if(info){
+      const staffTop=py-20*s;
+      const staffBot=groundY+info.depth*scaleV;
+      // Staff rod
+      ctx.fillStyle='#cc4400';
+      ctx.fillRect(px+24*s,staffTop,4*s,staffBot-staffTop);
+      // LS-80X sensor box on staff (where laser hits)
+      const sensorY=groundY-G.laserHGL*scaleV;
+      const clampedSY=Math.max(staffTop+10*s,Math.min(staffBot-10*s,sensorY));
+      ctx.fillStyle='#22cc66';
+      ctx.fillRect(px+22*s,clampedSY-5*s,8*s,10*s);
+      ctx.fillStyle='#22ee66';ctx.font=`${7*s}px Arial`;
+      ctx.fillText('LS',px+23*s,clampedSY+3*s);
+    } else {
+      // No pit at position, draw staff normally
+      ctx.fillStyle='#cc4400';ctx.fillRect(px+24*s,py-20*s,4*s,72*s);
+      ctx.fillStyle='#22cc66';ctx.fillRect(px+22*s,py-8*s,8*s,9*s);
+    }
   }
 
   ctx.restore();
@@ -989,35 +1074,22 @@ function drawSectionLabels(){
   for(let i=0;i<NUM_SECTIONS;i++){
     const sec=G.sections[i];
     if(!sec)continue;
-    const sx=(PIT_LEFT+i*SEC_W)-camX;
-    if(sx<-SEC_W||sx>W+SEC_W)continue;
+    const sx=PIT_LEFT+i*SEC_W;
     const cx=sx+SEC_W/2;
 
-    // Section number
-    ctx.fillStyle=sec.excOK?'rgba(34,204,102,0.7)':i===G.curSec?'rgba(224,104,32,0.8)':'rgba(100,130,150,0.5)';
+    // Section number ABOVE pit (near groundY-12)
+    ctx.fillStyle=sec.excOK?'rgba(34,204,102,0.8)':i===G.curSec?'rgba(224,104,32,0.9)':'rgba(150,170,190,0.6)';
     ctx.font='bold 10px Arial';
-    ctx.fillText(`区画${i+1}`,cx-14,groundY-6);
+    ctx.textAlign='center';
+    ctx.fillText(`区画${i+1}`,cx,groundY-12);
+    ctx.textAlign='left';
 
-    // Section separator
+    // Section divider
     if(i>0){
-      const sepX=sx;
-      ctx.strokeStyle='rgba(100,80,50,0.5)';ctx.lineWidth=1;ctx.setLineDash([3,3]);
-      ctx.beginPath();ctx.moveTo(sepX,groundY);ctx.lineTo(sepX,H);ctx.stroke();
+      ctx.strokeStyle='rgba(120,90,50,0.5)';ctx.lineWidth=1;ctx.setLineDash([3,3]);
+      ctx.beginPath();ctx.moveTo(sx,groundY);ctx.lineTo(sx,H);ctx.stroke();
       ctx.setLineDash([]);
     }
-  }
-
-  // Section info for current section
-  const cs=G.sections[G.curSec];
-  if(cs&&cs.soilRemoved>0){
-    const sx=(PIT_LEFT+G.curSec*SEC_W)-camX;
-    const depthPx=cs.soilRemoved*scaleV;
-    ctx.strokeStyle='rgba(224,104,32,0.4)';ctx.lineWidth=1;
-    ctx.setLineDash([3,3]);
-    ctx.beginPath();ctx.moveTo(sx+SEC_W+20,groundY);ctx.lineTo(sx+SEC_W+20,groundY+depthPx);ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.fillStyle='rgba(224,104,32,0.9)';ctx.font='10px Arial';
-    ctx.fillText(`${Math.round(cs.soilRemoved)}mm`,sx+SEC_W+23,groundY+depthPx/2+4);
   }
 }
 
@@ -1025,12 +1097,15 @@ function drawSectionLabels(){
 // PROXIMITY
 // ============================================================
 const proxZones=[
-  {id:'tripod',x:150,r:100,lbl:'RL-H5A確認'},
-  {id:'pit',x:PIT_LEFT+NUM_SECTIONS*SEC_W/2,r:NUM_SECTIONS*SEC_W/2+80,lbl:'深さ確認 / 指示'},
-  {id:'bh',x:0,r:90,lbl:'オペへ指示',dynamic:true}, // x updated from bhWorldX
+  {id:'tripod',x:0,r:100,lbl:'RL-H5A確認'},
+  {id:'pit',x:0,r:0,lbl:'深さ確認 / 指示'},
+  {id:'bh',x:0,r:90,lbl:'オペへ指示',dynamic:true},
 ];
 
 function checkProximityUI(){
+  proxZones[0].x=Math.round(W*0.09);
+  proxZones[1].x=PIT_LEFT+PIT_W/2;
+  proxZones[1].r=PIT_W/2+80;
   proxZones[2].x=bhWorldX();
   const pp=document.getElementById('proxPrompt');
   let nearest=null,minD=9999;
@@ -1039,7 +1114,7 @@ function checkProximityUI(){
     if(d<z.r&&d<minD){minD=d;nearest=z;}
   });
   if(nearest){
-    const sx=nearest.x-camX;
+    const sx=nearest.x;
     const sy=groundY-52;
     pp.style.left=`${Math.max(4,Math.min(W-150,sx-40))}px`;
     pp.style.top=`${Math.max(4,sy)}px`;
@@ -1051,6 +1126,9 @@ function checkProximityUI(){
 }
 
 function handleNearestInteract(){
+  proxZones[0].x=Math.round(W*0.09);
+  proxZones[1].x=PIT_LEFT+PIT_W/2;
+  proxZones[1].r=PIT_W/2+80;
   proxZones[2].x=bhWorldX();
   let nearest=null,minD=9999;
   proxZones.forEach(z=>{
@@ -1067,31 +1145,127 @@ function handleNearestInteract(){
 }
 
 // ============================================================
+// WORKER POSITION HELPERS
+// ============================================================
+function getInfoAtPlayer(){
+  for(let i=0;i<NUM_SECTIONS;i++){
+    const secLeft=PIT_LEFT+i*SEC_W;
+    const secRight=secLeft+SEC_W;
+    if(Player.x>=secLeft-40&&Player.x<=secRight+40){
+      const relX=Math.max(0,Math.min(1,(Player.x-secLeft)/SEC_W));
+      const colIdx=Math.min(PROFILE_COLS-1,Math.floor(relX*PROFILE_COLS));
+      return {
+        section:i,
+        col:colIdx,
+        depth:G.sections[i].soilProfile[colIdx],
+        gravel:G.sections[i].gravelProfile[colIdx],
+        concrete:G.sections[i].conProfile[colIdx]
+      };
+    }
+  }
+  return null;
+}
+
+function getWorkerCol(){
+  const secLeft=PIT_LEFT+G.curSec*SEC_W;
+  const relX=Math.max(0,Math.min(1,(Player.x-secLeft)/SEC_W));
+  return Math.min(PROFILE_COLS-1,Math.floor(relX*PROFILE_COLS));
+}
+
+// ============================================================
+// LS-80X LIVE UPDATE
+// ============================================================
+let lastBeepTime=0;
+
+function updateLiveLS(){
+  if(!Player.hasStaff||!G.measType){
+    updateLSPanelIdle();
+    return;
+  }
+  const info=getInfoAtPlayer();
+  if(!info){updateLSPanelIdle();return;}
+
+  let diff=0;
+  if(G.measType==='exc'){
+    const reading=G.laserHGL+info.depth;
+    diff=reading-G.ps1;
+  } else if(G.measType==='grv'){
+    const reading=G.laserHGL+G.glDepth-info.gravel;
+    diff=reading-G.ps2;
+  } else if(G.measType==='con'){
+    const reading=G.laserHGL+G.glDepth-info.gravel-info.concrete;
+    diff=reading-G.ps3;
+  }
+  updateLSPanel(diff);
+}
+
+const LED_THRESHOLDS=[5,15,40,100,200];
+
+function updateLSPanel(diff){
+  // All off first
+  for(let i=1;i<=5;i++){
+    document.getElementById(`led-hi-${i}`).className='ls-led';
+    document.getElementById(`led-lo-${i}`).className='ls-led';
+  }
+  document.getElementById('led-center').className='ls-led-center';
+
+  const absDiff=Math.abs(diff);
+
+  if(absDiff<=2){
+    document.getElementById('led-center').className='ls-led-center on-just';
+  } else if(diff>0){
+    // High: light hi LEDs
+    for(let i=1;i<=5;i++){
+      if(diff>LED_THRESHOLDS[i-1]){
+        document.getElementById(`led-hi-${i}`).className='ls-led on-hi';
+      }
+    }
+  } else {
+    // Low: light lo LEDs
+    for(let i=1;i<=5;i++){
+      if(-diff>LED_THRESHOLDS[i-1]){
+        document.getElementById(`led-lo-${i}`).className='ls-led on-lo';
+      }
+    }
+  }
+
+  // mm display
+  const sign=diff>0?'+':'';
+  const mmEl=document.getElementById('lsMmVal');
+  const rounded=Math.round(diff);
+  mmEl.textContent=`${sign}${rounded}mm`;
+  if(absDiff<=5) mmEl.style.color='#22ee66';
+  else if(absDiff<=30) mmEl.style.color='#ffcc00';
+  else mmEl.style.color='#e03020';
+
+  // Beep throttle
+  const now=Date.now();
+  if(Player.hasStaff&&now-lastBeepTime>600){
+    lastBeepTime=now;
+    if(absDiff<=5) sndJust();
+    else if(absDiff<=30) sndSlight();
+    else sndFar();
+  }
+}
+
+function updateLSPanelIdle(){
+  for(let i=1;i<=5;i++){
+    document.getElementById(`led-hi-${i}`).className='ls-led';
+    document.getElementById(`led-lo-${i}`).className='ls-led';
+  }
+  document.getElementById('led-center').className='ls-led-center';
+  const mmEl=document.getElementById('lsMmVal');
+  mmEl.textContent='-- mm';
+  mmEl.style.color='#4a6a7a';
+}
+
+// ============================================================
 // SETUP SCREEN FUNCTIONS
 // ============================================================
 function setupAdjust(key,delta){
   G[key]=Math.max(0,G[key]+delta);
-  updateSetupDisplay();
+  document.getElementById(`svPs${key.slice(2)}`).textContent=`${G[key]}mm`;
   sndBtn();
-}
-
-function updateSetupDisplay(){
-  const cfg=DIFF[G.diff];
-  document.getElementById('svPs1').textContent=`${G.ps1}mm`;
-  document.getElementById('svPs2').textContent=`${G.ps2}mm`;
-  document.getElementById('svPs3').textContent=`${G.ps3}mm`;
-  updateSetupLS('ssLS1',G.ps1,G.s1,cfg);
-  updateSetupLS('ssLS2',G.ps2,G.s2,cfg);
-  updateSetupLS('ssLS3',G.ps3,G.s3,cfg);
-}
-
-function updateSetupLS(elId,pv,target,cfg){
-  const el=document.getElementById(elId);
-  const diff=pv-target;
-  if(diff===0){el.textContent='◉ ジャスト！';el.className='ssi-ls just';sndJust();}
-  else if(Math.abs(diff)<=cfg.tol){el.textContent=diff>0?'▲ やや高い':'▼ やや低い';el.className='ssi-ls '+(diff>0?'shigh':'slow');sndSlight();}
-  else if(diff>0){el.textContent='▲▲ 高すぎ';el.className='ssi-ls high';sndFar();}
-  else{el.textContent='▼▼ 低すぎ';el.className='ssi-ls low';sndFar();}
 }
 
 function beginExcavation(){
@@ -1099,7 +1273,7 @@ function beginExcavation(){
   showScreen('gameScreen');
   requestAnimationFrame(()=>{
     resizeCanvas();
-    Player.x=250;
+    Player.x=PIT_LEFT*0.5;
     G.phase='excavation';
     G.curSec=0;
     initExcPhase();
@@ -1116,11 +1290,14 @@ function selectDiff(diff){
   G.diff=diff;
   const cfg=DIFF[diff];
 
-  G.glDepth=cfg.frac?rnd(140,250)*10+rnd(0,4)*5:rnd(14,25)*100;
+  G.glDepth=cfg.fracNum?rnd(140,250)*10+rnd(0,4)*5:rnd(14,25)*100;
   G.gravelThk=[100,120,150,200][rnd(0,3)];
   G.concreteThk=[50,60,80,100][rnd(0,3)];
-  G.laserHRef=rnd(1,7)*100;
-  G.laserHGL=1000+G.laserHRef;
+
+  // Variable base reference
+  G.glRef=GL_REF_OPTIONS[rnd(0,GL_REF_OPTIONS.length-1)];
+  G.laserHRef=LASER_REF_OPTIONS[rnd(0,LASER_REF_OPTIONS.length-1)];
+  G.laserHGL=G.glRef+G.laserHRef;
   G.s1=G.laserHGL+G.glDepth;
   G.s2=G.s1-G.gravelThk;
   G.s3=G.s2-G.concreteThk;
@@ -1133,60 +1310,42 @@ function selectDiff(diff){
   G.safetyDone=false;G.excAllDone=false;G.grvAllDone=false;G.conDone=false;
   if(G.timerInterval)clearInterval(G.timerInterval);
 
-  // Setup screen
-  document.getElementById('svLaser').textContent=
-    cfg.showLaser?`基準面より +${G.laserHRef}mm（GL実高 ${G.laserHGL}mm）`:'非表示（自分で計算）';
+  // Setup screen params
+  document.getElementById('svGlRef').textContent=`GL+${G.glRef}mm`;
+  document.getElementById('svLaser').textContent=`基準面より +${G.laserHRef}mm`;
   document.getElementById('svGL').textContent=`GL-${G.glDepth}mm`;
   document.getElementById('svGravel').textContent=`${G.gravelThk}mm`;
   document.getElementById('svConcrete').textContent=`${G.concreteThk}mm`;
 
-  if(cfg.hint){
-    const hb=document.getElementById('setupHint');
-    hb.style.display='block';
-    hb.innerHTML=`💡 ヒント：<br>①根切底 = ${G.laserHGL}+${G.glDepth} = <b>${G.s1}mm</b><br>`+
-      `②砕石上端 = ${G.s1}−${G.gravelThk} = <b>${G.s2}mm</b><br>`+
-      `③捨コン = ${G.s2}−${G.concreteThk} = <b>${G.s3}mm</b>`;
-  } else {
-    document.getElementById('setupHint').style.display='none';
-  }
-  updateSetupDisplay();
+  document.getElementById('svPs1').textContent=`${G.ps1}mm`;
+  document.getElementById('svPs2').textContent=`${G.ps2}mm`;
+  document.getElementById('svPs3').textContent=`${G.ps3}mm`;
+
   showScreen('setupScreen');
 }
 
 function initExcPhase(){
-  // First section: auto 3 buckets
   const sec=G.sections[0];
-  sec.soilRemoved=INITIAL_BUCKETS*BUCKET_DEPTH;
+  for(let b=0;b<INITIAL_BUCKETS;b++) applyDig(sec,BUCKET_DEPTH);
   sec.buckets=INITIAL_BUCKETS;
   sec.initialDone=true;
 
-  // Enable buttons
   setBtn('btnCheck',true);
   setBtn('btnEmg',true);
   setBtn('btnSlope',true);setBtn('btnDist',true);setBtn('btnEvac',true);
-  // Update staff display
   updateStaffPanel('exc');
-  // Update HUD
   document.getElementById('hudGL').textContent=`GL-${G.glDepth}mm`;
   document.getElementById('hudGrav').textContent=`${G.gravelThk}mm`;
   document.getElementById('hudCon').textContent=`${G.concreteThk}mm`;
-  const cfg=DIFF[G.diff];
-  document.getElementById('hudScore').className='hv warn';
-  // Section indicator
   updateSecIndicator();
-  // Timer
+
+  const cfg=DIFF[G.diff];
   if(cfg.timeLimit>0){
     G.timeLeft=cfg.timeLimit;
     document.getElementById('hudTimer').textContent=fmtTime(G.timeLeft);
     G.timerInterval=setInterval(tickTimer,1000);
   }
-  // Hint
-  const cfg2=DIFF[G.diff];
-  if(cfg2.hint){
-    const hb=document.getElementById('hintBox');
-    hb.style.display='block';
-    hb.innerHTML=`💡①根切底スタッフ: ${G.s1}mm ②砕石: ${G.s2}mm ③捨コン: ${G.s3}mm`;
-  }
+
   showNotify('掘削開始！',`区画1（全${NUM_SECTIONS}区画）初回${INITIAL_BUCKETS}バケット掘削完了。\n深さを確認してください。`);
   updateHudPhase('根切工','深さ確認ボタンを押してください');
 }
@@ -1201,28 +1360,32 @@ function doCheck(){
   G.measType='exc';
   Player.hasStaff=true;
   const sec=G.sections[G.curSec];
+  const avgDepth=Math.round(profileAvg(sec.soilProfile));
   addScore(8);
   updateStaffPanel('exc');
-  updateLS80X('exc',G.ps1,G.s1);
   setBtn('btnCheck',false);
-  setBtn('btnDigMore',true);setBtn('btnReturnSoil',true);setBtn('btnManual',true);setBtn('btnSectionOK',true);
-  updateHudPhase(`根切工 区画${G.curSec+1}`,`スタッフ値: ${G.ps1}mm / 現在深さ: ${Math.round(sec.soilRemoved)}mm`);
+  setBtn('btnDigMore',true);setBtn('btnReturnSoil',true);
+  setBtn('btnManualAdd',true);setBtn('btnManualRem',true);
+  setBtn('btnSectionOK',true);
+  updateHudPhase(`根切工 区画${G.curSec+1}`,`スタッフ値: ${G.ps1}mm / 現在深さ(平均): ${avgDepth}mm`);
+  document.getElementById('hudDepth').textContent=`${avgDepth}mm`;
 }
 
 function doDigMore(){
   if(G.bhState!=='idle')return;
   const sec=G.sections[G.curSec];
-  sec.soilRemoved+=BUCKET_DEPTH;
+  applyDig(sec,BUCKET_DEPTH);
   sec.buckets++;
   G.bhState='digging';G.bhAnim=0;
   addScore(3);sndDig();
-  document.getElementById('hudDepth').textContent=`${Math.round(sec.soilRemoved)}mm`;
-  // Re-enable check after animation
+  const avgDepth=Math.round(profileAvg(sec.soilProfile));
+  document.getElementById('hudDepth').textContent=`${avgDepth}mm`;
   setTimeout(()=>{
-    setBtn('btnDigMore',false);setBtn('btnReturnSoil',false);setBtn('btnManual',false);setBtn('btnSectionOK',false);
+    setBtn('btnDigMore',false);setBtn('btnReturnSoil',false);
+    setBtn('btnManualAdd',false);setBtn('btnManualRem',false);setBtn('btnSectionOK',false);
     setBtn('btnCheck',true);
-    showNotify('掘削完了',`区画${G.curSec+1}: ${sec.buckets}バケット目完了（${Math.round(sec.soilRemoved)}mm）`);
-    Player.hasStaff=false;G.measuring=false;
+    showNotify('掘削完了',`区画${G.curSec+1}: ${sec.buckets}バケット目完了（平均${Math.round(profileAvg(sec.soilProfile))}mm）`);
+    Player.hasStaff=false;G.measuring=false;G.measType=null;
     updateHudPhase(`根切工 区画${G.curSec+1}`,'深さを再確認してください');
   },1200);
 }
@@ -1230,56 +1393,63 @@ function doDigMore(){
 function doReturnSoil(){
   if(G.bhState!=='idle')return;
   const sec=G.sections[G.curSec];
-  sec.soilRemoved=Math.max(0,sec.soilRemoved-RETURN_SOIL_AMT);
+  applyReturn(sec,RETURN_SOIL_AMT);
   G.bhState='returning';G.bhAnim=0;
   addScore(2);sndBtn();
   setTimeout(()=>{
-    setBtn('btnDigMore',false);setBtn('btnReturnSoil',false);setBtn('btnManual',false);setBtn('btnSectionOK',false);
+    setBtn('btnDigMore',false);setBtn('btnReturnSoil',false);
+    setBtn('btnManualAdd',false);setBtn('btnManualRem',false);setBtn('btnSectionOK',false);
     setBtn('btnCheck',true);
-    Player.hasStaff=false;G.measuring=false;
+    Player.hasStaff=false;G.measuring=false;G.measType=null;
     updateHudPhase(`根切工 区画${G.curSec+1}`,'深さを再確認してください');
   },1200);
 }
 
-function doManual(){
+function doManualAdd(){
   const sec=G.sections[G.curSec];
-  const diff=G.ps1-G.s1;
-  // If reading high (ps1 > s1), surface is too high → dig manually (remove soil)
-  // If reading low (ps1 < s1), surface is too low → add soil manually
-  if(diff>0) sec.soilRemoved=Math.min(sec.soilRemoved+MANUAL_ADJ,G.glDepth*1.5);
-  else sec.soilRemoved=Math.max(0,sec.soilRemoved-MANUAL_ADJ);
+  const col=getWorkerCol();
+  sec.soilProfile[col]+=MANUAL_ADJ;
   addScore(5);sndBtn();
-  updateLS80X('exc',G.ps1,G.s1);
-  showNotify('手動調整',`レーキ/スコップで微調整しました（±${MANUAL_ADJ}mm）`);
+  document.getElementById('hudDepth').textContent=`${Math.round(profileAvg(sec.soilProfile))}mm`;
+  showNotify('手動削り',`区画${G.curSec+1} 列${col+1}: +${MANUAL_ADJ}mm`);
+}
+
+function doManualRem(){
+  const sec=G.sections[G.curSec];
+  const col=getWorkerCol();
+  sec.soilProfile[col]=Math.max(0,sec.soilProfile[col]-MANUAL_ADJ);
+  addScore(5);sndBtn();
+  document.getElementById('hudDepth').textContent=`${Math.round(profileAvg(sec.soilProfile))}mm`;
+  showNotify('手動埋め',`区画${G.curSec+1} 列${col+1}: -${MANUAL_ADJ}mm`);
 }
 
 function doSectionOK(){
-  const cfg=DIFF[G.diff];
   const sec=G.sections[G.curSec];
-  // Check actual depth vs target
-  const diff=G.ps1-G.s1;
+  const avgDepth=profileAvg(sec.soilProfile);
+  sec.finalAvgDepth=avgDepth;
+  const diff=Math.round(avgDepth-G.glDepth);
   addScore(10);sndOK();
   sec.excOK=true;
-  setBtn('btnDigMore',false);setBtn('btnReturnSoil',false);setBtn('btnManual',false);setBtn('btnSectionOK',false);
-  Player.hasStaff=false;G.measuring=false;
-  showNotify(`区画${G.curSec+1} OK！`,`深さ確定（${Math.round(sec.soilRemoved)}mm）\n誤差: ${diff>=0?'+':''}${diff}mm`);
+  setBtn('btnDigMore',false);setBtn('btnReturnSoil',false);
+  setBtn('btnManualAdd',false);setBtn('btnManualRem',false);setBtn('btnSectionOK',false);
+  Player.hasStaff=false;G.measuring=false;G.measType=null;
+  showNotify(`区画${G.curSec+1} OK！`,`深さ確定（平均${Math.round(avgDepth)}mm）\n目標との誤差: ${diff>=0?'+':''}${diff}mm`);
 
-  // Move to next section
   const next=G.curSec+1;
   if(next<NUM_SECTIONS){
     G.curSec=next;
     G.bhState='moving';G.bhAnim=0;
     setTimeout(()=>{
       const ns=G.sections[G.curSec];
-      ns.soilRemoved=INITIAL_BUCKETS*BUCKET_DEPTH;
+      for(let b=0;b<INITIAL_BUCKETS;b++) applyDig(ns,BUCKET_DEPTH);
       ns.buckets=INITIAL_BUCKETS;
       ns.initialDone=true;
       setBtn('btnCheck',true);
       updateHudPhase(`根切工 区画${G.curSec+1}`,`初回${INITIAL_BUCKETS}バケット完了。深さ確認を。`);
       showNotify(`区画${G.curSec+1}へ移動`,`バックホウが区画${G.curSec+1}に移動しました。`);
+      document.getElementById('hudDepth').textContent=`${Math.round(profileAvg(ns.soilProfile))}mm`;
     },2000);
   } else {
-    // All sections done
     G.excAllDone=true;
     updateSecIndicator();
     unlockGravel();
@@ -1316,20 +1486,20 @@ function doGrvCheck(){
   sndBtn();addScore(8);
   G.measType='grv';Player.hasStaff=true;
   updateStaffPanel('grv');
-  updateLS80X('grv',G.ps2,G.s2);
   setBtn('btnGrvCheck',false);
-  setBtn('btnGrvAdd',true);setBtn('btnGrvRemove',true);setBtn('btnGrvOK',true);
-  updateHudPhase(`砕石工 区画${G.curSec+1}`,`スタッフ: ${G.ps2}mm / 砕石: ${G.sections[G.curSec].gravelAdded}mm`);
+  setBtn('btnGrvAdd',true);setBtn('btnGrvRemove',true);setBtn('btnRake',true);setBtn('btnGrvOK',true);
+  const avgGrv=Math.round(profileAvg(G.sections[G.curSec].gravelProfile));
+  updateHudPhase(`砕石工 区画${G.curSec+1}`,`スタッフ: ${G.ps2}mm / 砕石平均: ${avgGrv}mm`);
 }
 
 function doGrvAdd(){
   if(G.bhState!=='idle')return;
   const sec=G.sections[G.curSec];
-  sec.gravelAdded=Math.min(sec.gravelAdded+GRAVEL_PER_DUMP,G.gravelThk+100);
+  applyGravelDump(sec,GRAVEL_PER_DUMP);
   G.bhState='dumping';G.bhAnim=0;
   addScore(3);sndDig();
   setTimeout(()=>{
-    setBtn('btnGrvAdd',false);setBtn('btnGrvRemove',false);setBtn('btnGrvOK',false);
+    setBtn('btnGrvAdd',false);setBtn('btnGrvRemove',false);setBtn('btnRake',false);setBtn('btnGrvOK',false);
     setBtn('btnGrvCheck',true);
     Player.hasStaff=false;G.measType=null;
     updateHudPhase(`砕石工 区画${G.curSec+1}`,'高さを再確認してください');
@@ -1338,23 +1508,37 @@ function doGrvAdd(){
 
 function doGrvRemove(){
   const sec=G.sections[G.curSec];
-  sec.gravelAdded=Math.max(0,sec.gravelAdded-GRAVEL_PER_DUMP);
+  applyGravelRemove(sec,GRAVEL_PER_DUMP);
   G.bhState='returning';G.bhAnim=0;
   addScore(2);sndBtn();
   setTimeout(()=>{
-    setBtn('btnGrvAdd',false);setBtn('btnGrvRemove',false);setBtn('btnGrvOK',false);
+    setBtn('btnGrvAdd',false);setBtn('btnGrvRemove',false);setBtn('btnRake',false);setBtn('btnGrvOK',false);
     setBtn('btnGrvCheck',true);
     Player.hasStaff=false;G.measType=null;
   },1200);
 }
 
+function doRake(){
+  const sec=G.sections[G.curSec];
+  const profile=sec.gravelProfile;
+  const mean=profile.reduce((a,b)=>a+b,0)/profile.length;
+  for(let c=0;c<PROFILE_COLS;c++){
+    profile[c]+=(mean-profile[c])*0.4;
+    profile[c]+=(Math.random()-0.5)*3;
+    profile[c]=Math.max(0,profile[c]);
+  }
+  addScore(5);sndBtn();
+  showNotify('整地','レイキで砕石を均しました。');
+}
+
 function doGrvOK(){
   const sec=G.sections[G.curSec];
+  const avgGrv=profileAvg(sec.gravelProfile);
+  sec.finalAvgGravel=avgGrv;
   sec.grvOK=true;addScore(10);sndOK();
-  const diff=G.ps2-G.s2;
   Player.hasStaff=false;G.measType=null;
-  setBtn('btnGrvAdd',false);setBtn('btnGrvRemove',false);setBtn('btnGrvOK',false);
-  showNotify(`砕石 区画${G.curSec+1} OK`,`砕石高さ確定（${sec.gravelAdded}mm）誤差: ${diff>=0?'+':''}${diff}mm`);
+  setBtn('btnGrvAdd',false);setBtn('btnGrvRemove',false);setBtn('btnRake',false);setBtn('btnGrvOK',false);
+  showNotify(`砕石 区画${G.curSec+1} OK`,`砕石高さ確定（平均${Math.round(avgGrv)}mm）`);
   const next=G.curSec+1;
   if(next<NUM_SECTIONS){
     G.curSec=next;G.bhState='moving';G.bhAnim=0;
@@ -1385,18 +1569,19 @@ function doConCheck(){
   sndBtn();addScore(8);
   G.measType='con';Player.hasStaff=true;
   updateStaffPanel('con');
-  updateLS80X('con',G.ps3,G.s3);
   setBtn('btnConCheck',false);setBtn('btnConPour',true);
   updateHudPhase('捨コン工','LS-80X確認後、打設完了ボタンを押してください');
 }
 
 function doConPour(){
   addScore(20);sndOK();
-  // Pour based on staff thickness
-  const pThk=G.ps2-G.ps3; // player's concrete thickness from staff settings
+  const pThk=G.ps2-G.ps3;
   const actualThk=Math.max(10,pThk);
   G.sections.forEach(s=>{
-    s.concreteAdded=actualThk;s.conOK=true;
+    for(let c=0;c<PROFILE_COLS;c++){
+      s.conProfile[c]=actualThk;
+    }
+    s.conOK=true;
   });
   Player.hasStaff=false;G.measType=null;G.conDone=true;
   setBtn('btnConPour',false,true);
@@ -1406,8 +1591,10 @@ function doConPour(){
 }
 
 function doEmg(){
-  const cfg=DIFF[G.diff];addScore(-cfg.emgPen);sndErr();
-  showNotify('緊急停止！',`ペナルティ -${cfg.emgPen}pt`);
+  const cfg=DIFF[G.diff];
+  const pen=20;
+  addScore(-pen);sndErr();
+  showNotify('緊急停止！',`ペナルティ -${pen}pt`);
 }
 
 // ============================================================
@@ -1427,38 +1614,13 @@ function updateStaffPanel(type){
   document.getElementById('spVal').textContent=`${vals[type]||'--'} mm`;
 }
 
-// Minor in-game staff adjustment (fine-tune if needed)
 function gameAdjust(delta){
   if(!G.measType)return;
   const k={exc:'ps1',grv:'ps2',con:'ps3'}[G.measType];
   if(!k)return;
   G[k]=Math.max(0,G[k]+delta);
   document.getElementById('spVal').textContent=`${G[k]} mm`;
-  updateLS80X(G.measType,G[k],{exc:G.s1,grv:G.s2,con:G.s3}[G.measType]);
   sndBtn();
-}
-
-// ============================================================
-// LS-80X
-// ============================================================
-function updateLS80X(type,pv,target){
-  const cfg=DIFF[G.diff];
-  const diff=pv-target;const tol=cfg.tol;
-  const st=document.getElementById('lsStatus');
-  const df=document.getElementById('lsDiff');
-  const bar=document.getElementById('lsBar');
-  if(diff===0){st.textContent='◉ ジャスト！';st.className='ls-status just';df.textContent='誤差: 0mm';bar.style.width='5px';bar.style.left='calc(50% - 2px)';bar.style.background='#22ff66';sndJust();}
-  else if(Math.abs(diff)<=tol){
-    st.textContent=diff>0?'▲ やや高い':'▼ やや低い';st.className='ls-status '+(diff>0?'shigh':'slow');
-    df.textContent=`誤差: ${diff>0?'+':''}${diff}mm`;
-    const w=Math.min(40,Math.abs(diff)/tol*40);bar.style.width=w+'%';bar.style.left=diff>0?'50%':`calc(50% - ${w}%)`;bar.style.background='#ffcc00';sndSlight();
-  } else if(diff>0){
-    st.textContent='▲▲ 高すぎ';st.className='ls-status high';df.textContent=`誤差: +${diff}mm`;
-    const w=Math.min(47,40+(diff-tol)/200*7);bar.style.width=w+'%';bar.style.left='50%';bar.style.background='#ff4444';sndFar();
-  } else {
-    st.textContent='▼▼ 低すぎ';st.className='ls-status low';df.textContent=`誤差: ${diff}mm`;
-    const w=Math.min(47,40+(-diff-tol)/200*7);bar.style.width=w+'%';bar.style.left=`calc(50% - ${w}%)`;bar.style.background='#ff8800';sndFar();
-  }
 }
 
 // ============================================================
@@ -1536,24 +1698,36 @@ function showResult(){
   const tbody=document.getElementById('rsTbody');tbody.innerHTML='';
   let allPass=true;const impacts=[];
   items.forEach(it=>{
-    const diff=it.ps-it.cs;const pass=Math.abs(diff)<=cfg.tol;
+    const diff=it.ps-it.cs;const pass=Math.abs(diff)<=TOL;
     if(!pass){allPass=false;impacts.push({name:it.name,dir:diff>0?'pos':'neg',key:it.key});}
     const tr=document.createElement('tr');
     tr.innerHTML=`<td>${it.name}</td><td style="color:#5cb8b2">${it.ps}mm</td><td style="color:#e06820">${it.cs}mm</td><td style="color:${pass?'#22cc66':'#ff4444'}">${diff>=0?'+':''}${diff}mm</td><td>${pass?'<span class="badge-pass">合格</span>':'<span class="badge-fail">不合格</span>'}</td>`;
     tbody.appendChild(tr);
   });
+
+  // Per-section depth evaluation
+  const sbody=document.getElementById('rsSectionTbody');sbody.innerHTML='';
+  G.sections.forEach((sec,i)=>{
+    const avg=Math.round(sec.finalAvgDepth||profileAvg(sec.soilProfile));
+    const diff=avg-G.glDepth;
+    const pass=Math.abs(diff)<=TOL;
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${i+1}</td><td>${avg}mm</td><td>${G.glDepth}mm</td><td style="color:${pass?'#22cc66':'#ff4444'}">${diff>=0?'+':''}${diff}mm</td><td>${pass?'<span class="badge-pass">合格</span>':'<span class="badge-fail">不合格</span>'}</td>`;
+    sbody.appendChild(tr);
+  });
+
   let bonusTxt='';
-  if(allPass){const b=Math.floor(50*cfg.bonus);addScore(b);bonusTxt+=`✅ 全合格ボーナス: +${b}pt（×${cfg.bonus}倍）<br>`;}
-  if(timeBonus>0){addScore(timeBonus);bonusTxt+=`⏱ タイムボーナス: +${timeBonus}pt`;}
+  if(allPass){const b=Math.floor(50*cfg.mult);addScore(b);bonusTxt+=`全合格ボーナス: +${b}pt（×${cfg.mult}倍）<br>`;}
+  if(timeBonus>0){addScore(timeBonus);bonusTxt+=`タイムボーナス: +${timeBonus}pt`;}
   document.getElementById('rsBonus').innerHTML=bonusTxt||'ボーナスなし';
   if(impacts.length){
     document.getElementById('rsImpacts').style.display='block';
     document.getElementById('rsImpactList').innerHTML=impacts.map(i=>`<li>【${i.name}】${IMPACTS[i.key][i.dir]}</li>`).join('');
   } else document.getElementById('rsImpacts').style.display='none';
-  document.getElementById('rsTitle').textContent=allPass?'🏆 全合格！工事完了':'📋 工事完了レポート';
+  document.getElementById('rsTitle').textContent=allPass?'全合格！工事完了':'工事完了レポート';
   document.getElementById('rsTitle').style.color=allPass?'#22cc66':'#e06820';
   document.getElementById('rsScore').textContent=`${G.score} pt`;
-  document.getElementById('rsDiff').textContent=`難易度: ${cfg.name}｜許容誤差: ±${cfg.tol}mm`;
+  document.getElementById('rsDiff').textContent=`難易度: ${cfg.name}｜許容誤差: ±${TOL}mm`;
   showScreen('resultScreen');
 }
 
@@ -1562,9 +1736,10 @@ function showResult(){
 // ============================================================
 function startDemo(){
   selectDiff('beginner');
-  // Auto-fill staff values
   G.ps1=G.s1;G.ps2=G.s2;G.ps3=G.s3;
-  updateSetupDisplay();
+  document.getElementById('svPs1').textContent=`${G.ps1}mm`;
+  document.getElementById('svPs2').textContent=`${G.ps2}mm`;
+  document.getElementById('svPs3').textContent=`${G.ps3}mm`;
   setTimeout(()=>{
     beginExcavation();
     showNotify('デモプレイ中','自動でゲームの流れをご覧ください');
@@ -1585,15 +1760,15 @@ function startDemo(){
       ()=>document.getElementById('btnSectionOK').click(),
       ()=>{},()=>{},
       ()=>{try{document.getElementById('btnGrvCheck').click();}catch(e){}},
-      ()=>document.getElementById('btnGrvOK').click(),
+      ()=>{try{document.getElementById('btnGrvOK').click();}catch(e){}},
       ()=>{try{document.getElementById('btnGrvCheck').click();}catch(e){}},
-      ()=>document.getElementById('btnGrvOK').click(),
+      ()=>{try{document.getElementById('btnGrvOK').click();}catch(e){}},
       ()=>{try{document.getElementById('btnGrvCheck').click();}catch(e){}},
-      ()=>document.getElementById('btnGrvOK').click(),
+      ()=>{try{document.getElementById('btnGrvOK').click();}catch(e){}},
       ()=>{try{document.getElementById('btnGrvCheck').click();}catch(e){}},
-      ()=>document.getElementById('btnGrvOK').click(),
+      ()=>{try{document.getElementById('btnGrvOK').click();}catch(e){}},
       ()=>{try{document.getElementById('btnGrvCheck').click();}catch(e){}},
-      ()=>document.getElementById('btnGrvOK').click(),
+      ()=>{try{document.getElementById('btnGrvOK').click();}catch(e){}},
       ()=>{try{document.getElementById('btnConCheck').click();}catch(e){}},
       ()=>{try{document.getElementById('btnConPour').click();}catch(e){}},
       ()=>showResult(),
